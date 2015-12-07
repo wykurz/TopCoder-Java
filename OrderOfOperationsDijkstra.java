@@ -1,7 +1,7 @@
 // BEGIN CUT HERE
 // END CUT HERE
 import java.util.*;
-public class OrderOfOperations
+public class OrderOfOperationsDijkstra
 {
 	long len(long key)
 	{
