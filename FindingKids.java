@@ -127,9 +127,9 @@ public class FindingKids
             }
             assert(0 < step);
             if (lhigh)
-                lord -= step;
+                lord = Math.max(0, lord - step);
             else
-                lord += step;
+                lord = Math.min(ord, lord + step);
             step = step / 2 + (step & 1);
         }
     }
@@ -144,7 +144,6 @@ public class FindingKids
         long total = 0;
         for (int i = 0; i < q; ++i) {
             total += query(i);
-            total %= M;
         }
         return total;
     }
@@ -153,9 +152,11 @@ public class FindingKids
     public static void main(String[] args)
     {
         try {
-            eq(2, (new FindingKids()).getSum(200000, 200000, 12345, 67890, 111213141), 133378408428237L);
+            // eq(3, (new FindingKids()).getSum(10, 5, 0, 1, 1), 15L);
             eq(0, (new FindingKids()).getSum(5, 2, 0, 1, 1), 15L);
             eq(1, (new FindingKids()).getSum(5, 4, 3, 2, 1), 43376L);
+            eq(2, (new FindingKids()).getSum(200000, 200000, 12345, 67890, 111213141), 133378408428237L);
+            eq(3, (new FindingKids()).getSum(1, 200000, 299935478, 93657707, 751975948), 55916462670542L);
         } catch (Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);
